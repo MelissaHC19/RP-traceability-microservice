@@ -1,6 +1,7 @@
 package com.pragma.traceability_microservice.infrastructure.configuration;
 
 import com.pragma.traceability_microservice.domain.api.IAuthenticationServicePort;
+import com.pragma.traceability_microservice.domain.api.IRestaurantServicePort;
 import com.pragma.traceability_microservice.domain.api.ITraceabilityServicePort;
 import com.pragma.traceability_microservice.domain.spi.ITokenProviderPort;
 import com.pragma.traceability_microservice.domain.spi.ITraceabilityPersistencePort;
@@ -19,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
     private final ITraceabilityRepository traceabilityRepository;
     private final ITraceabilityDocumentMapper traceabilityDocumentMapper;
+    private final IRestaurantServicePort restaurantServicePort;
 
     @Bean
     public ITokenProviderPort tokenProviderPort() {
@@ -37,6 +39,6 @@ public class BeanConfiguration {
 
     @Bean
     public ITraceabilityServicePort traceabilityServicePort() {
-        return new TraceabilityUseCase(traceabilityPersistencePort());
+        return new TraceabilityUseCase(traceabilityPersistencePort(), restaurantServicePort);
     }
 }

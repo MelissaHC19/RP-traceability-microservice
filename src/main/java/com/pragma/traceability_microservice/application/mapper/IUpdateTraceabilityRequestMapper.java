@@ -12,5 +12,6 @@ public interface IUpdateTraceabilityRequestMapper {
     @Mapping(target = "clientId", ignore = true)
     @Mapping(target = "clientEmail", ignore = true)
     @Mapping(target = "initialTime", ignore = true)
+    @Mapping(target = "restaurantId", ignore = true)
     Traceability updateRequestToTraceability(UpdateTraceabilityRequest updateTraceabilityRequest);
 }

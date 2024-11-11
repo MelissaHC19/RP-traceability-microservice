@@ -35,4 +35,6 @@ public interface ITraceabilityDocumentMapper {
                 .map(this::statusLogDocumentToStatusLog)
                 .toList();
     }
+
+    List<Traceability> traceabilityDocumentToTraceabilityList(List<TraceabilityDocument> traceabilityDocumentList);
 }

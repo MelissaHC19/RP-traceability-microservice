@@ -26,4 +26,5 @@ public class TraceabilityDocument {
     private List<StatusLogDocument> statusLogs;
     private Long employeeId;
     private String employeeEmail;
+    private Long restaurantId;
 }

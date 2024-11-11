@@ -8,4 +8,5 @@ public class ControllerConstants {
     public static final String TIMESTAMP = "timestamp";
     public static final String ERRORS = "errors";
     public static final String ROLE_CLIENT = "Client";
+    public static final String ROLE_OWNER = "Owner";
 }

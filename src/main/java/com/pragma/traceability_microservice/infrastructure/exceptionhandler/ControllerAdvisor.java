@@ -1,10 +1,7 @@
 package com.pragma.traceability_microservice.infrastructure.exceptionhandler;
 
 import com.pragma.traceability_microservice.application.dto.response.ExceptionResponse;
-import com.pragma.traceability_microservice.domain.exceptions.InvalidRoleException;
-import com.pragma.traceability_microservice.domain.exceptions.InvalidTokenException;
-import com.pragma.traceability_microservice.domain.exceptions.TraceabilityNotFoundException;
-import com.pragma.traceability_microservice.domain.exceptions.UnauthorizedClientException;
+import com.pragma.traceability_microservice.domain.exceptions.*;
 import com.pragma.traceability_microservice.infrastructure.constants.ControllerConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +36,18 @@ public class ControllerAdvisor {
 
     @ExceptionHandler(UnauthorizedClientException.class)
     public ResponseEntity<ExceptionResponse> handleUnauthorizedClientException(UnauthorizedClientException exception) {
+        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), HttpStatus.FORBIDDEN.toString(), LocalDateTime.now());
+        return ResponseEntity.status(403).body(response);
+    }
+
+    @ExceptionHandler(RestaurantNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleRestaurantNotFoundException(RestaurantNotFoundException exception) {
+        ExceptionResponse response = new ExceptionResponse(exception.getMessage(), HttpStatus.NOT_FOUND.toString(), LocalDateTime.now());
+        return ResponseEntity.status(404).body(response);
+    }
+
+    @ExceptionHandler(UnauthorizedOwnerException.class)
+    public ResponseEntity<ExceptionResponse> handleUnauthorizedOwnerException(UnauthorizedOwnerException exception) {
         ExceptionResponse response = new ExceptionResponse(exception.getMessage(), HttpStatus.FORBIDDEN.toString(), LocalDateTime.now());
         return ResponseEntity.status(403).body(response);
     }
