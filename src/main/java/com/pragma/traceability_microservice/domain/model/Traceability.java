@@ -13,8 +13,9 @@ public class Traceability {
     private Long employeeId;
     private String employeeEmail;
     private List<StatusLog> statusLogs;
+    private Long restaurantId;
 
-    public Traceability(String id, Long orderId, Long clientId, String clientEmail, LocalDateTime initialTime, LocalDateTime finalTime, Long employeeId, String employeeEmail, List<StatusLog> statusLogs) {
+    public Traceability(String id, Long orderId, Long clientId, String clientEmail, LocalDateTime initialTime, LocalDateTime finalTime, Long employeeId, String employeeEmail, List<StatusLog> statusLogs, Long restaurantId) {
         this.id = id;
         this.orderId = orderId;
         this.clientId = clientId;
@@ -24,6 +25,7 @@ public class Traceability {
         this.employeeId = employeeId;
         this.employeeEmail = employeeEmail;
         this.statusLogs = statusLogs;
+        this.restaurantId = restaurantId;
     }
 
     public String getId() {
@@ -96,5 +98,13 @@ public class Traceability {
 
     public void setStatusLogs(List<StatusLog> statusLogs) {
         this.statusLogs = statusLogs;
+    }
+
+    public Long getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(Long restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }
